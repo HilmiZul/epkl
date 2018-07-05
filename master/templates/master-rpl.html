@@ -1,0 +1,39 @@
+{% extends "layout2/base.html" %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-12">
+    <h2 class="page-header">Semua Siswa RPL</h2>
+    <div class="table-responsive">
+      <table class="table table-hover table-striped" id="dataTables">
+        <thead>
+          <tr>
+            <th>NO.</th>
+            <th>NIS</th>
+            <th>NAMA</th>
+            <th>KELAS</th>
+            <th>STATUS PKL</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for siswa in master %}
+          <tr>
+            <td>{{ forloop.counter }}.</td>
+            <td>{{ siswa.NIS }}</td>
+            <td>{{ siswa.nama }}</td>
+            <td>{{ siswa.kelas }}</td>
+            {% if siswa.pkl %}
+              <td><i class="fa fa-check-circle-o fa-fw fa-2x"></i> </td>
+            {% else %}
+              <td><i class="fa fa-times-circle-o fa-fw fa-2x"></i></td>
+            {% endif %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+</div>
+{% endblock %}

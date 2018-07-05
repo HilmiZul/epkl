@@ -1,0 +1,39 @@
+{% extends "layout2/base_login.html" %}
+
+{% block content %}
+<section class="login">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-4 col-md-offset-4">
+          <div class="page-header text-center">
+            <h1>e-PKL</h1>
+            <h4>LOGIN.</h4>
+          </div>
+          <form action="/login/" method="post">
+            {% csrf_token %}
+
+            {% if messages %}
+              {% for message in messages %}
+                <div class="alert alert-danger">{{ message }}</div>
+              {% endfor %}
+            {% endif %}
+
+            <div class="form-group">
+              <input type="text" class="form-control" name="username" placeholder="Username" required autofocus>
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" name="password" placeholder="Password" required>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-default btn-lg"><i class="fa fa-sign-in"></i> Login</button>
+            </div>
+          </form>
+          <hr>
+          <p class="text-muted text-center small">Copyleft &copy; 2018 <strong>ESK2</strong> All Rights Reserved.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

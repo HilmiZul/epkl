@@ -1,0 +1,49 @@
+{% extends "layout2/base.html" %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-12">
+    <h2 class="page-header">Semua Siswa XII.RPL-1</h2>
+    <div class="table-responsive">
+      <table class="table table-hover table-striped" id="dataTables">
+        <thead>
+          <tr>
+            <th>NO.</th>
+            <th>NIS</th>
+            <th>NAMA</th>
+            <th>AKSI</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for siswa in master %}
+          <tr>
+            <td>{{ forloop.counter }}.</td>
+            <td><a href="/master-rpl-1/ubah/{{ siswa.id }}">{{ siswa.NIS }}</a></td>
+            <td>{{ siswa.nama }}</td>
+            <td><a href="#" class="btn btn-danger" data-toggle="modal" data-target="#NIS-{{ siswa.NIS }}"><i class="fa fa-trash-o"></i> Hapus</a></td>
+          </tr>
+          <div class="modal fade" id="NIS-{{ siswa.NIS }}">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <form action="/master-rpl-1/hapus/{{ siswa.id }}" method="post">
+                  {% csrf_token %}
+                  <div class="modal-body">
+                    Hapus siswa dengan nama <strong>{{ siswa.nama }}</strong>?
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-danger">Ya, hapus</button>
+                    <button type="button" data-dismiss="modal" class="btn btn-warning">Enggak</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+</div>
+{% endblock %}

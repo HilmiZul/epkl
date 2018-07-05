@@ -1,0 +1,31 @@
+{% extends "layout/base.html" %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3>Surat Permohonan</h3>
+        </div>
+        <div class="panel-body">
+          <form action="/cetak/" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="instansi">PILIH INSTANSI</label>
+              <select name="id_ins" class="form-control selectpicker" data-live-search="true" id="instansi">
+                {% for ins in instansi %}
+                  <option value="{{ ins.id }}">{{ forloop.counter }} | {{ ins.nama }}</option>
+                {% endfor %}
+              </select>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-lg">CETAK SURAT</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

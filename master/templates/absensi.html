@@ -1,0 +1,37 @@
+{% extends "layout2/base.html" %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-6">
+    <h2 class="page-header">Absensi</h2>
+    <form action="/absensi/cetak/" method="post">
+      {% csrf_token %}
+
+      <div class="form-group">
+        <label for="">Judul Absensi</label>
+        <input type="text" class="form-control" name="judul" placeholder="ex: ABSENSI PESERTA PEMBEKALAN" value="ABSENSI PESERTA PEMBEKALAN" required autofocus>
+      </div>
+      <div class="form-group">
+        <label for="">Pilih Kelas</label>
+        <select class="form-control selectpicker" data-live-search="true" name="get_kelas">
+          <option value="">-----</option>
+          <optgroup label="TKJ">
+            <option value="XII.TKJ-1">XII.TKJ-1</option>
+            <option value="XII.TKJ-2">XII.TKJ-2</option>
+            <option value="XII.TKJ-3">XII.TKJ-3</option>
+            <option value="XII.TKJ-4">XII.TKJ-4</option>
+          </optgroup>
+          <optgroup label="RPL">
+            <option value="XII.RPL-1">XII.RPL-1</option>
+            <option value="XII.RPL-2">XII.RPL-2</option>
+            <option value="XII.RPL-3">XII.RPL-3</option>
+          </optgroup>
+        </select>
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary btn-lg"><i class="fa fa-print"></i> Kuy ah</button>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  {% include "layout/head.html" %}
+  <body>
+    {% if meta_surat is None %}
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <div class="page-header">
+              <h2>e-PRAKERIN 2k18</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="tab">
+              <a href="/">Beranda</a> &bull;
+              <a href="/laporan">Laporan</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+    {% block content %}
+    {% endblock %}
+
+    {% include "layout/js.html" %}
+  </body>
+</html>

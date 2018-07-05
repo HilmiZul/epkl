@@ -1,0 +1,55 @@
+/*
+ * pkl-style.css
+ * e-PKL 2K18
+ * zul hilmi <netspytux@gmail.com>
+ * https://github.com/hilmizul
+ * https://gitlab.com/hilmizul
+ */
+
+@font-face {
+ font-family: istok;
+ src: url('/static/vendor/fonts/istok.ttf');
+ font-weight: normal;
+ font-style: normal;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  font-family: istok;
+}
+
+.login {
+  font-family: Prototype;
+  width: 100%;
+  height: 100%;
+  background: transparent url('/static/img/bg-ibukota.png') no-repeat bottom right;
+  padding-top: 100px;
+  padding-bottom: 150px;
+  display: table;
+  background-size: cover;
+  -webkit-background-size: cover;
+     -moz-background-size: cover;
+      -ms-background-size: cover;
+       -o-background-size: cover;
+}
+
+.martop-content {
+  margin-top: 20px;
+}
+
+.name-tag-list {
+  width: 100%;
+}
+
+.form-control,
+.btn,
+.alert,
+.panel {
+  border-radius: 0;
+}

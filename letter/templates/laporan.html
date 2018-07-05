@@ -1,0 +1,28 @@
+{% extends "layout/base.html" %}
+
+{% block content %}
+
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>NO.</th>
+        <th>TEMPAT PKL</th>
+        <th>NIS</th>
+        <th>NAMA</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for p in permohonans %}
+      <tr>
+        <td>{{ forloop.counter }}.</td>
+        <td>{{ p.nama_instansi }}</td>
+        <td>{{ p.nama_siswa.NIS }}</td>
+        <td>{{ p.nama_siswa }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

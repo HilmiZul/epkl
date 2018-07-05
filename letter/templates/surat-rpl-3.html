@@ -1,0 +1,29 @@
+{% extends "layout2/base.html" %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-12">
+    <h2 class="page-header">Siswa Yang Telah Mendapatkan Tempat PKL - XII.RPL-3</h2>
+    <div class="table-responsive">
+      <table class="table table-hover table-striped" id="dataTables">
+        <thead>
+          <tr>
+            <th>NO.</th>
+            <th>TEMPAT PKL</th>
+            <th>NAMA SISWA</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for surat in surats %}
+            <tr>
+              <td>{{ forloop.counter }}.</td>
+              <td>{{ surat.nama_instansi.nama }}</td>
+              <td>{{ surat.nama_siswa.nama }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

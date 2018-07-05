@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+{% include "layout2/head.html" %}
+
+<body>
+
+    <div id="wrapper">
+
+      {% include "layout2/nav.html" %}
+
+      <div id="page-wrapper">
+        {% block content %}
+        {% endblock %}
+      </div>
+      <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    {% include "layout2/js.html" %}
+</body>
+
+</html>

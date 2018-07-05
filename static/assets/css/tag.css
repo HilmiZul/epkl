@@ -1,0 +1,30 @@
+/*
+ * tag.css
+ * NAME TAG
+ * Zul Hilmi <netspytux@gmail.com>
+ * https://github.com/hilmizul/esp
+ * https://gitlab.com/hilmizul/esp
+ */
+
+body {
+  font-family: "Fredoka One";
+}
+.img {
+  position: relative;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+.name {
+  position: relative;
+  top: -90px;
+  padding-left: 20px;
+  font-weight: normal;
+  color: #5a5a5a;
+  font-size: 20pt;
+}
+
+.col-md-6 {
+  margin:0;
+  padding: 0;
+}

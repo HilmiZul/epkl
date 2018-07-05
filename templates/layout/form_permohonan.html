@@ -1,0 +1,15 @@
+{% extends "layout/base.html" %}
+
+{% block content %}
+<form action="/cetak/" method="post">
+  <div>NAMA INSTANSI</div>
+  <input type="text" name="nama_instansi" placeholder="Contoh: CodePolitan">
+  <div>ALAMAT INSTANSI</div>
+  <textarea name="alamat_instansi" rows="8" cols="80" placeholder="Contoh: Jl.Sukajadi No.123 Bandung"></textarea>
+  <div>NAMA SISWA</div>
+  {% for i in count_siswa %}
+    <input type="text" name="siswa[{{ i }}]" placeholder="Siswa-{{i}}"><br>
+  {% endfor %}
+  <button type="submit">Cetak Surat</button>
+</form>
+{% endblock %}

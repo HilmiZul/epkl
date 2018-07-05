@@ -1,0 +1,10 @@
+{% extends "layout2/base_tag.html" %}
+
+{% block content %}
+  {% for s in siswa %}
+  <div class="col-md-6">
+    <img src="/static/img/THIS.RPL.png" class="img">
+    <div class="name">{{ s.nama }}</div>
+  </div>
+  {% endfor %}
+{% endblock %}

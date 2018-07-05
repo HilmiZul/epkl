@@ -1,0 +1,36 @@
+{% extends "layout/base.html" %}
+
+{% block content %}
+<div class="container">
+  <div class="row text-center hr">
+    <div class="col-md-2">
+      <img src="/static/img/prov-logo.png" class="logo">
+    </div>
+    <div class="col-md-8">
+      <p>PEMERINTAH PROVINSI JAWA BARAT</p>
+      <p>DINAS PENDIDIKAN</p>
+      <p class="tebal">SEKOLAH MENENGAH KEJURUAN NEGERI 4 TASIKMALAYA</p>
+      <p>Jl. Depok Kel. Sukamenak Kec. Purbaratu (0265) 312059</p>
+      <p>Website : www.smkn4-tsm.sch.id Email : smkn4tsm@gmail.com</p>
+      <p>Kota Tasikmalaya 46196</p>
+    </div>
+    <div class="col-md-2">
+      <img src="/static/img/koukousei-logo.png" class="logo">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <p>Yth.Kepala/Pimpinan</p>
+      <p>{{ instansi.nama }}</p>
+      <p>di</p>
+      <p>{{ instansi.alamat }}</p>
+
+      <ul>
+        {% for MetaSurat in meta_surat %}
+          <li>{{ MetaSurat.nama_siswa }} {{ MetaSurat.nama_siswa.kelas }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock %}
