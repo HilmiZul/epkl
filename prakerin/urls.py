@@ -37,10 +37,6 @@ urlpatterns = [
     url(r'^master-tkj-4/$', master_view.master_tkj_4),
 
     url(r'^surat-tkj/$', letter_view.surat_tkj),
-    url(r'^surat-tkj-1/$', letter_view.surat_tkj_1),
-    url(r'^surat-tkj-2/$', letter_view.surat_tkj_2),
-    url(r'^surat-tkj-3/$', letter_view.surat_tkj_3),
-    url(r'^surat-tkj-4/$', letter_view.surat_tkj_4),
     url(r'^surat-tkj/tambah/$', letter_view.tambah_surat_tkj),
     url(r'^surat-tkj/hapus/(\d+)', letter_view.hapus_surat_tkj),
 
@@ -61,9 +57,6 @@ urlpatterns = [
     url(r'^master-rpl-3/$', master_view.master_rpl_3),
 
     url(r'^surat-rpl/$', letter_view.surat_rpl),
-    url(r'^surat-rpl-1/$', letter_view.surat_rpl_1),
-    url(r'^surat-rpl-2/$', letter_view.surat_rpl_2),
-    url(r'^surat-rpl-3/$', letter_view.surat_rpl_3),
     url(r'^surat-rpl/tambah/$', letter_view.tambah_surat_rpl),
     url(r'^surat-rpl/hapus/(\d+)', letter_view.hapus_surat_rpl),
     url(r'^surat-rpl/ubah/(\d+)', letter_view.ubah_surat_rpl),
