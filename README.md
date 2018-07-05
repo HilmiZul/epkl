@@ -9,7 +9,8 @@ Pengembangan dari [esp](https://github.com/hilmizul/esp).
 # Setup
 * Download [epkl-master.zip](https://github.com/HilmiZul/epkl/archive/master.zip)
 * Extract. Open Terminal.
-* ```cd epkl/```
+* ```cd epkl-master/```
+* ```chmod +x manage.py```
 * ```./manage.py makemigrations && ./manage.py migrate```
 * ```./manage.py createsuperuser```
 * ```./manage.py runserver```
