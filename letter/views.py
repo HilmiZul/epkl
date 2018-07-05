@@ -6,11 +6,6 @@ from master.models import Instansi, Siswa
 from letter.models import Permohonan
 
 # Create your views here.
-@login_required(login_url=settings.LOGIN_URL)
-def form_letter(request):
-    instansi = Instansi.objects.order_by('nama')
-    return render(request, 'form_letter.html', {'instansi':instansi})
-
 # CETAK
 @login_required(login_url=settings.LOGIN_URL)
 def form_cetak(request,id_ins):
