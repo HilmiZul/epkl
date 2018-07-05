@@ -79,44 +79,10 @@ def ubah_surat_rpl(request,id_surat):
 
 
 @login_required(login_url=settings.LOGIN_URL)
-def surat_rpl_1(request):
-    surat = Permohonan.objects.filter(nama_siswa__kelas='XII.RPL-1').order_by('nama_instansi')
-    return render(request, 'surat-rpl-1.html', {'surats':surat})
-
-@login_required(login_url=settings.LOGIN_URL)
-def surat_rpl_2(request):
-    surat = Permohonan.objects.filter(nama_siswa__kelas='XII.RPL-2').order_by('nama_instansi')
-    return render(request, 'surat-rpl-2.html', {'surats':surat})
-
-@login_required(login_url=settings.LOGIN_URL)
-def surat_rpl_3(request):
-    surat = Permohonan.objects.filter(nama_siswa__kelas='XII.RPL-3').order_by('nama_instansi')
-    return render(request, 'surat-rpl-3.html', {'surats':surat})
-
-@login_required(login_url=settings.LOGIN_URL)
 def surat_tkj(request):
     surat = Permohonan.objects.filter(nama_siswa__program_ahli='Teknik Komputer dan Jaringan').order_by('nama_instansi')
     return render(request, 'surat-tkj.html', {'surats':surat})
 
-@login_required(login_url=settings.LOGIN_URL)
-def surat_tkj_1(request):
-    surat = Permohonan.objects.filter(nama_siswa__kelas='XII.TKJ-1').order_by('nama_instansi')
-    return render(request, 'surat-tkj-1.html', {'surats':surat})
-
-@login_required(login_url=settings.LOGIN_URL)
-def surat_tkj_2(request):
-    surat = Permohonan.objects.filter(nama_siswa__kelas='XII.TKJ-2').order_by('nama_instansi')
-    return render(request, 'surat-tkj-2.html', {'surats':surat})
-
-@login_required(login_url=settings.LOGIN_URL)
-def surat_tkj_3(request):
-    surat = Permohonan.objects.filter(nama_siswa__kelas='XII.TKJ-3').order_by('nama_instansi')
-    return render(request, 'surat-tkj-3.html', {'surats':surat})
-
-@login_required(login_url=settings.LOGIN_URL)
-def surat_tkj_4(request):
-    surat = Permohonan.objects.filter(nama_siswa__kelas='XII.TKJ-4').order_by('nama_instansi')
-    return render(request, 'surat-tkj-4.html', {'surats':surat})
 
 # HAPUS.TKJ
 @login_required(login_url=settings.LOGIN_URL)
