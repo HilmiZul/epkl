@@ -114,9 +114,11 @@ def surat_tkj(request):
 @login_required(login_url=settings.LOGIN_URL)
 def hapus_surat_tkj(request, id_surat):
     if request.POST:
+        # ambil dulu ID Siswa dari model Permohonan
+        id_siswa = Permohonan.objects.get(id=id_surat)
+        Siswa.objects.filter(id=id_siswa.nama_siswa.id).update(pkl = False)
+        # lalu hapus data surat permohonannya
         Permohonan.objects.filter(id=id_surat).delete()
-        get_id_siswa = Permohonan.objects.filter(id=id_surat)
-        Siswa.objects.filter(id=get_id_siswa__nama_siswa).update(pkl = False)
         msg = "Berhasil dihapus."
         get_surat = Permohonan.objects.filter(nama_siswa__program_ahli='Rekayasa Perangkat Lunak').order_by('nama_instansi')
     else:
@@ -128,9 +130,9 @@ def hapus_surat_tkj(request, id_surat):
 @login_required(login_url=settings.LOGIN_URL)
 def hapus_surat_rpl(request, id_surat):
     if request.POST:
+        id_siswa = Permohonan.objects.get(id=id_surat)
+        Siswa.objects.filter(id=id_siswa.nama_siswa.id).update(pkl = False)
         Permohonan.objects.filter(id=id_surat).delete()
-        get_id_siswa = Permohonan.objects.filter(id=id_surat)
-        Siswa.objects.filter(id=get_id_siswa__nama_siswa).update(pkl = False)
         msg = "Berhasil dihapus."
         get_surat = Permohonan.objects.filter(nama_siswa__program_ahli='Rekayasa Perangkat Lunak').order_by('nama_instansi')
     else:
