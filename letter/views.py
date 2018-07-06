@@ -71,6 +71,37 @@ def ubah_surat_rpl(request,id_surat):
         }
     )
 
+@login_required(login_url=settings.LOGIN_URL)
+def ubah_surat_tkj(request,id_surat):
+    if request.POST:
+        s = Siswa.objects.get(id=request.POST['nama_siswa'])
+        i = Instansi.objects.get(id=request.POST['nama_instansi'])
+
+        Permohonan.objects.filter(id=id_surat).update(
+            nama_siswa = s,
+            nama_instansi = i,
+        )
+        msg = "Berhasil diperbaharui."
+        surat = Permohonan.objects.get(id=id_surat)
+        return render(request, 'ubah-surat-tkj.html', {'msg':msg, 'surat':surat})
+    else:
+        surat = Permohonan.objects.get(id=id_surat)
+        siswa1 = Siswa.objects.filter(kelas='XII.TKJ-1')
+        siswa2 = Siswa.objects.filter(kelas='XII.TKJ-2')
+        siswa3 = Siswa.objects.filter(kelas='XII.TKJ-3')
+        siswa4 = Siswa.objects.filter(kelas='XII.TKJ-4')
+        instansis = Instansi.objects.all()
+    return render(request, 'ubah-surat-tkj.html',
+        {
+            'surat':surat,
+            'siswa1':siswa1,
+            'siswa2':siswa2,
+            'siswa3':siswa3,
+            'siswa4':siswa4,
+            'instansis':instansis,
+        }
+    )
+
 
 
 @login_required(login_url=settings.LOGIN_URL)
