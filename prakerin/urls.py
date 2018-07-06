@@ -39,6 +39,7 @@ urlpatterns = [
     url(r'^surat-tkj/$', letter_view.surat_tkj),
     url(r'^surat-tkj/tambah/$', letter_view.tambah_surat_tkj),
     url(r'^surat-tkj/hapus/(\d+)', letter_view.hapus_surat_tkj),
+    url(r'^surat-tkj/ubah/(\d+)', letter_view.ubah_surat_tkj),
 
     url(r'^master-tkj-1/ubah/(\d+)', master_view.ubah_tkj_1),
     url(r'^master-tkj-2/ubah/(\d+)', master_view.ubah_tkj_2),
