@@ -3,7 +3,67 @@
 {% block content %}
 <div class="row">
   <div class="col-md-12">
-    <h2>Annyeong haseyo, {{ request.session.nama_depan }}-shi</h2>
+    <h2 class="page-header">Dashboard</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="panel panel-info">
+          <div class="panel-heading">
+            STATISTIK TKJ
+          </div>
+          <div class="panel-body">
+            <table class="table table-striped table-hover">
+              <tbody>
+                <tr>
+                  <th>Jumlah Siswa</th>
+                  <td>: {{ siswa_tkj }}</td>
+                </tr>
+                <tr>
+                  <th>Jumlah Instansi PKL</th>
+                  <td>: {{ instansi_tkj }}</td>
+                </tr>
+                <tr>
+                  <th>Yang Sudah Mendapatkan Tempat PKL</th>
+                  <td>: {{ siswa_tkj_get_pkl }}</td>
+                </tr>
+                <tr>
+                  <th>Yang Belum Mendapatkan Tempat PKL</th>
+                  <td>: {{ siswa_tkj_not_pkl }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="panel panel-success">
+          <div class="panel-heading">
+            STATISTIK RPL
+          </div>
+          <div class="panel-body">
+            <table class="table table-striped table-hover">
+              <tbody>
+                <tr>
+                  <th>Jumlah Siswa</th>
+                  <td>: {{ siswa_rpl }}</td>
+                </tr>
+                <tr>
+                  <th>Jumlah Instansi PKL</th>
+                  <td>: {{ instansi_rpl }}</td>
+                </tr>
+                <tr>
+                  <th>Yang Sudah Mendapatkan Tempat PKL</th>
+                  <td>: {{ siswa_rpl_get_pkl }}</td>
+                </tr>
+                <tr>
+                  <th>Yang Belum Mendapatkan Tempat PKL</th>
+                  <td>: {{ siswa_rpl_not_pkl }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 {% endblock %}
