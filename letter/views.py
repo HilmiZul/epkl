@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 
-from master.models import Instansi, Siswa
-from letter.models import Permohonan
+from master.models import Instansi, Siswa, InstansiTKJ
+from letter.models import Permohonan, PermohonanTKJ
 
 # Create your views here.
 # CETAK
@@ -22,6 +22,15 @@ def form_cetak(request,id_ins):
     if id_ins is not None:
         meta_surat = Permohonan.objects.filter(nama_instansi_id=id_ins)
         instansi = Instansi.objects.get(id=id_ins)
+        result = render(request, 'cetak.html', {'meta_surat':meta_surat, 'instansi':instansi})
+    else:
+        result = redirect('/')
+    return result
+
+def form_cetak_tkj(request,id_ins):
+    if id_ins is not None:
+        meta_surat = PermohonanTKJ.objects.filter(nama_instansi_id=id_ins)
+        instansi = InstansiTKJ.objects.get(id=id_ins)
         result = render(request, 'cetak.html', {'meta_surat':meta_surat, 'instansi':instansi})
     else:
         result = redirect('/')
@@ -54,7 +63,20 @@ def ubah_surat_rpl(request,id_surat):
         )
         msg = "Berhasil diperbaharui."
         surat = Permohonan.objects.get(id=id_surat)
-        return render(request, 'ubah-surat-rpl.html', {'msg':msg, 'surat':surat})
+        siswa1 = Siswa.objects.filter(kelas='XII.RPL-1')
+        siswa2 = Siswa.objects.filter(kelas='XII.RPL-2')
+        siswa3 = Siswa.objects.filter(kelas='XII.RPL-3')
+        instansis = Instansi.objects.all()
+        return render(request, 'ubah-surat-rpl.html',
+            {
+                'surat':surat,
+                'msg':msg,
+                'siswa1':siswa1,
+                'siswa2':siswa2,
+                'siswa3':siswa3,
+                'instansis':instansis,
+            }
+        )
     else:
         surat = Permohonan.objects.get(id=id_surat)
         siswa1 = Siswa.objects.filter(kelas='XII.RPL-1')
@@ -75,22 +97,37 @@ def ubah_surat_rpl(request,id_surat):
 def ubah_surat_tkj(request,id_surat):
     if request.POST:
         s = Siswa.objects.get(id=request.POST['nama_siswa'])
-        i = Instansi.objects.get(id=request.POST['nama_instansi'])
+        i = InstansiTKJ.objects.get(id=request.POST['nama_instansi'])
 
-        Permohonan.objects.filter(id=id_surat).update(
+        PermohonanTKJ.objects.filter(id=id_surat).update(
             nama_siswa = s,
             nama_instansi = i,
         )
         msg = "Berhasil diperbaharui."
-        surat = Permohonan.objects.get(id=id_surat)
-        return render(request, 'ubah-surat-tkj.html', {'msg':msg, 'surat':surat})
-    else:
-        surat = Permohonan.objects.get(id=id_surat)
         siswa1 = Siswa.objects.filter(kelas='XII.TKJ-1')
         siswa2 = Siswa.objects.filter(kelas='XII.TKJ-2')
         siswa3 = Siswa.objects.filter(kelas='XII.TKJ-3')
         siswa4 = Siswa.objects.filter(kelas='XII.TKJ-4')
-        instansis = Instansi.objects.all()
+        instansis = InstansiTKJ.objects.all()
+        surat = PermohonanTKJ.objects.get(id=id_surat)
+        return render(request, 'ubah-surat-tkj.html',
+            {
+                'msg':msg,
+                'surat':surat,
+                'siswa1':siswa1,
+                'siswa2':siswa2,
+                'siswa3':siswa3,
+                'siswa4':siswa4,
+                'instansis':instansis,
+            }
+        )
+    else:
+        surat = PermohonanTKJ.objects.get(id=id_surat)
+        siswa1 = Siswa.objects.filter(kelas='XII.TKJ-1')
+        siswa2 = Siswa.objects.filter(kelas='XII.TKJ-2')
+        siswa3 = Siswa.objects.filter(kelas='XII.TKJ-3')
+        siswa4 = Siswa.objects.filter(kelas='XII.TKJ-4')
+        instansis = InstansiTKJ.objects.all()
     return render(request, 'ubah-surat-tkj.html',
         {
             'surat':surat,
@@ -106,7 +143,7 @@ def ubah_surat_tkj(request,id_surat):
 
 @login_required(login_url=settings.LOGIN_URL)
 def surat_tkj(request):
-    surat = Permohonan.objects.filter(nama_siswa__program_ahli='Teknik Komputer dan Jaringan').order_by('nama_instansi')
+    surat = PermohonanTKJ.objects.filter(nama_siswa__program_ahli='Teknik Komputer dan Jaringan').order_by('nama_instansi')
     return render(request, 'surat-tkj.html', {'surats':surat})
 
 
@@ -115,12 +152,12 @@ def surat_tkj(request):
 def hapus_surat_tkj(request, id_surat):
     if request.POST:
         # ambil dulu ID Siswa dari model Permohonan
-        id_siswa = Permohonan.objects.get(id=id_surat)
+        id_siswa = PermohonanTKJ.objects.get(id=id_surat)
         Siswa.objects.filter(id=id_siswa.nama_siswa.id).update(pkl = False)
         # lalu hapus data surat permohonannya
-        Permohonan.objects.filter(id=id_surat).delete()
+        PermohonanTKJ.objects.filter(id=id_surat).delete()
         msg = "Berhasil dihapus."
-        get_surat = Permohonan.objects.filter(nama_siswa__program_ahli='Rekayasa Perangkat Lunak').order_by('nama_instansi')
+        get_surat = PermohonanTKJ.objects.filter(nama_siswa__program_ahli='Rekayasa Perangkat Lunak').order_by('nama_instansi')
     else:
         return redirect('/surat-tkj/')
     return render(request, 'surat-tkj.html', {'msg':msg, 'surat':get_surat})
@@ -146,8 +183,8 @@ def hapus_surat_rpl(request, id_surat):
 def tambah_surat_tkj(request):
     if request.POST:
         siswa = Siswa.objects.get(id=request.POST['nama_siswa'])
-        instansi = Instansi.objects.get(id=request.POST['nama_instansi'])
-        Permohonan(
+        instansi = InstansiTKJ.objects.get(id=request.POST['nama_instansi'])
+        PermohonanTKJ(
             perihal = "PKL",
             nama_siswa = siswa,
             nama_instansi = instansi
@@ -160,7 +197,7 @@ def tambah_surat_tkj(request):
         siswa2 = Siswa.objects.filter(kelas='XII.TKJ-2', pkl=False)
         siswa3 = Siswa.objects.filter(kelas='XII.TKJ-3', pkl=False)
         siswa4 = Siswa.objects.filter(kelas='XII.TKJ-4', pkl=False)
-        instansis = Instansi.objects.all()
+        instansis = InstansiTKJ.objects.all()
         return render(request, 'tambah-surat-tkj.html',
             {'siswa1':siswa1, 'siswa2':siswa2, 'siswa3':siswa3, 'siswa4':siswa4, 'instansis':instansis}
         )
@@ -212,7 +249,7 @@ def cetak_rpl_belum_pkl(request):
 
 @login_required(login_url=settings.LOGIN_URL)
 def cetak_surat_tkj(request):
-    fix = Permohonan.objects.filter(nama_siswa__pkl=True, nama_siswa__program_ahli='Teknik Komputer dan Jaringan').order_by('nama_instansi__nama')
+    fix = PermohonanTKJ.objects.filter(nama_siswa__pkl=True, nama_siswa__program_ahli='Teknik Komputer dan Jaringan').order_by('nama_instansi__nama')
     return render(request, 'cetak-surat-tkj.html', {'surat':fix})
 
 @login_required(login_url=settings.LOGIN_URL)
