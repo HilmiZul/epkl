@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from master.models import Siswa, Instansi
+from master.models import Siswa, Instansi, InstansiTKJ
 
 # Register your models here.
 class SiswaAdmin(admin.ModelAdmin):
@@ -22,5 +22,11 @@ class InstansiAdmin(admin.ModelAdmin):
     search_fields = ['nama', 'alamat']
     list_per_page = 20
 
+class InstansiTKJAdmin(admin.ModelAdmin):
+    list_display = ['nama', 'alamat']
+    search_fields = ['nama', 'alamat']
+    list_per_page = 20
+
 admin.site.register(Siswa, SiswaAdmin)
 admin.site.register(Instansi, InstansiAdmin)
+admin.site.register(InstansiTKJ, InstansiTKJAdmin)
