@@ -16,7 +16,7 @@ def tag_rpl(request):
     return render(request, 'tag-rpl.html', {'siswa':siswa})
 
 def tag_tbsm(request):
-    siswa = Siswa.objects.filter(program_ahli='Teknik Bisnis Sepeda Motor', pkl=True)
+    siswa = Siswa.objects.filter(program_ahli='Teknik Sepeda Motor', pkl=False)
     return render(request, 'tag-tbsm.html', {'siswa':siswa})
 
 def tag_tkj_1(request):
@@ -46,3 +46,24 @@ def tag_rpl_2(request):
 def tag_rpl_3(request):
     siswa = Siswa.objects.filter(kelas='XII.RPL-3', pkl=True)
     return render(request, 'tag-rpl-3.html', {'siswa':siswa})
+
+def tag_tbsm(request):
+    siswa = Siswa.objects.filter(program_ahli='Teknik Sepeda Motor')
+    return render(request, 'tag-tbsm.html', {'siswa':siswa})
+
+def tag_tbsm_1(request):
+    siswa = Siswa.objects.filter(kelas='XII.TBSM-1', pkl=False)
+    return render(request, 'tag-tbsm.html', {'siswa':siswa})
+
+
+def tag_tbsm_2(request):
+    siswa = Siswa.objects.filter(kelas='XII.TBSM-2', pkl=False)
+    return render(request, 'tag-tbsm.html', {'siswa':siswa})
+
+def tag_tbsm_3(request):
+    siswa = Siswa.objects.filter(kelas='XII.TBSM-3', pkl=False)
+    return render(request, 'tag-tbsm.html', {'siswa':siswa})
+
+def tag_tbsm_4(request):
+    siswa = Siswa.objects.filter(kelas='XII.TBSM-4', pkl=False)
+    return render(request, 'tag-tbsm.html', {'siswa':siswa})
