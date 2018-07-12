@@ -31,7 +31,7 @@
           {% for surat in surats %}
             <tr>
               <td>{{ forloop.counter }}.</td>
-              <td><a href="/cetak/{{ surat.nama_instansi.id }}" target="_blank">{{ surat.nama_instansi.nama }}</a></td>
+              <td><a href="/surat-tkj/cetak-surat/{{ surat.nama_instansi.id }}" target="_blank">{{ surat.nama_instansi.nama }}</a></td>
               <td>{{ surat.nama_siswa.nama }}</td>
               <td>{{ surat.nama_siswa.kelas }}</td>
               <td>
