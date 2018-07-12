@@ -34,10 +34,3 @@ class Instansi(models.Model):
 
     def __unicode__(self):
         return self.nama
-
-class InstansiTKJ(models.Model):
-    nama = models.CharField(max_length=100)
-    alamat = models.TextField()
-
-    def __unicode__(self):
-        return self.nama
