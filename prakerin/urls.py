@@ -40,6 +40,7 @@ urlpatterns = [
     url(r'^surat-tkj/tambah/$', letter_view.tambah_surat_tkj),
     url(r'^surat-tkj/hapus/(\d+)', letter_view.hapus_surat_tkj),
     url(r'^surat-tkj/ubah/(\d+)', letter_view.ubah_surat_tkj),
+    url(r'^surat-tkj/cetak-surat/(\d+)', letter_view.form_cetak_tkj),
 
     url(r'^master-tkj-1/ubah/(\d+)', master_view.ubah_tkj_1),
     url(r'^master-tkj-2/ubah/(\d+)', master_view.ubah_tkj_2),
@@ -70,10 +71,15 @@ urlpatterns = [
     url(r'^master-rpl-2/hapus/(\d+)', master_view.delete_rpl_2),
     url(r'^master-rpl-3/hapus/(\d+)', master_view.delete_rpl_3),
 
-    url(r'^master-instansi/$', master_view.master_instansi),
-    url(r'^master-instansi/tambah/$', master_view.add_master_instansi),
-    url(r'^master-instansi/hapus/(\d+)$', master_view.delete_instansi),
-    url(r'^master-instansi/ubah/(\d+)$', master_view.ubah_instansi),
+    url(r'^master-instansi/rpl/$', master_view.master_instansi_rpl),
+    url(r'^master-instansi/rpl/tambah/$', master_view.add_instansi_rpl),
+    url(r'^master-instansi/rpl/hapus/(\d+)$', master_view.delete_instansi_rpl),
+    url(r'^master-instansi/rpl/ubah/(\d+)$', master_view.ubah_instansi_rpl),
+
+    url(r'^master-instansi/tkj/$', master_view.master_instansi_tkj),
+    url(r'^master-instansi/tkj/tambah/$', master_view.add_instansi_tkj),
+    url(r'^master-instansi/tkj/hapus/(\d+)$', master_view.delete_instansi_tkj),
+    url(r'^master-instansi/tkj/ubah/(\d+)$', master_view.ubah_instansi_tkj),
 
 
     url(r'^cetak/(\d+)', letter_view.form_cetak),
@@ -84,13 +90,21 @@ urlpatterns = [
     url(r'^name-tag/tkj/$', tag_view.tag_tkj),
     url(r'^name-tag/rpl/$', tag_view.tag_rpl),
     url(r'^name-tag/tbsm/$', tag_view.tag_tbsm),
+
     url(r'^name-tag/tkj-1/$', tag_view.tag_tkj_1),
     url(r'^name-tag/tkj-2/$', tag_view.tag_tkj_2),
     url(r'^name-tag/tkj-3/$', tag_view.tag_tkj_3),
     url(r'^name-tag/tkj-4/$', tag_view.tag_tkj_4),
+
     url(r'^name-tag/rpl-1/$', tag_view.tag_rpl_1),
     url(r'^name-tag/rpl-2/$', tag_view.tag_rpl_2),
     url(r'^name-tag/rpl-3/$', tag_view.tag_rpl_3),
+
+    url(r'^name-tag/tbsm/$', tag_view.tag_tbsm),
+    url(r'^name-tag/tbsm-1/$', tag_view.tag_tbsm_1),
+    url(r'^name-tag/tbsm-2/$', tag_view.tag_tbsm_2),
+    url(r'^name-tag/tbsm-3/$', tag_view.tag_tbsm_3),
+    url(r'^name-tag/tbsm-4/$', tag_view.tag_tbsm_4),
 
     url(r'^absensi/$', master_view.absensi),
     url(r'^absensi/cetak/$', master_view.cetak_absensi),
