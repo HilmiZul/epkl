@@ -1,3 +1,11 @@
+'''
+pesan.py
+25 Juli 2018
+khusus untuk pengelompokan pesan saat data:
+1. berhasil ditambahkan;
+2. berhasil diperbaharui;
+3. berhasil dihapus.
+'''
 class pesan:
     def __init__(self):
         self.success_add = "Berhasil ditambahkan. Yey!"
