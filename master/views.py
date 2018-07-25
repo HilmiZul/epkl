@@ -374,6 +374,13 @@ def cetak_absensi(request):
 
 
 @login_required(login_url=settings.LOGIN_URL)
-def cetak_instansi(request):
+def cetak_instansi_tkj(request):
+    instansi = InstansiTKJ.objects.all()
+    jurusan = "Teknik Komputer dan Jaringan"
+    return render(request, 'cetak-instansi.html', {'instansi':instansi, 'jurusan':jurusan})
+
+@login_required(login_url=settings.LOGIN_URL)
+def cetak_instansi_rpl(request):
     instansi = Instansi.objects.all()
-    return render(request, 'cetak-instansi.html', {'instansi':instansi})
+    jurusan = "Rekayasa Perangkat Lunak"
+    return render(request, 'cetak-instansi.html', {'instansi':instansi, 'jurusan':jurusan})
