@@ -115,7 +115,8 @@ urlpatterns = [
     url(r'^surat-tkj/cetak/$', letter_view.cetak_surat_tkj),
     url(r'^master-tkj/belum-pkl/$', letter_view.cetak_tkj_belum_pkl),
 
-    url(r'^master-instansi/cetak/$', master_view.cetak_instansi),
+    url(r'^master-instansi/tkj/cetak/$', master_view.cetak_instansi_tkj),
+    url(r'^master-instansi/rpl/cetak/$', master_view.cetak_instansi_rpl),
 
 
 ]
