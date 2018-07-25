@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from master.models import Siswa, Instansi, InstansiTKJ
 from master.forms import FormAddTKJ, FormAddRPL
+from pesan import pesan
 
 # Create your views here.
 
@@ -25,7 +26,7 @@ def add_master_tkj(request):
                 program_ahli = 'Teknik Komputer dan Jaringan',
             ).save()
 
-            msg = "Berhasil ditambahkan."
+            msg = pesan().add()
             form = FormAddTKJ()
             return render(request, 'add-master-tkj.html', {'msg':msg, 'form':form})
     else:
@@ -47,7 +48,7 @@ def ubah_tkj_1(request,id_siswa):
             nama = request.POST['nama'],
             kelas = request.POST['kelas'],
         )
-        msg = "Berhasil diperbaharui."
+        msg = pesan().update()
         siswa_update = Siswa.objects.get(id=id_siswa)
         return render(request, 'ubah-tkj-1.html', {'msg':msg, 'siswa':siswa_update})
     else:
@@ -61,7 +62,7 @@ def ubah_tkj_2(request,id_siswa):
             nama = request.POST['nama'],
             kelas = request.POST['kelas'],
         )
-        msg = "Berhasil diperbaharui."
+        msg = pesan().update()
         siswa_update = Siswa.objects.get(id=id_siswa)
         return render(request, 'ubah-tkj-2.html', {'msg':msg, 'siswa':siswa_update})
     else:
@@ -75,7 +76,7 @@ def ubah_tkj_3(request,id_siswa):
             nama = request.POST['nama'],
             kelas = request.POST['kelas'],
         )
-        msg = "Berhasil diperbaharui."
+        msg = pesan().update()
         siswa_update = Siswa.objects.get(id=id_siswa)
         return render(request, 'ubah-tkj-3.html', {'msg':msg, 'siswa':siswa_update})
     else:
@@ -89,7 +90,7 @@ def ubah_tkj_4(request,id_siswa):
             nama = request.POST['nama'],
             kelas = request.POST['kelas'],
         )
-        msg = "Berhasil diperbaharui."
+        msg = pesan().update()
         siswa_update = Siswa.objects.get(id=id_siswa)
         return render(request, 'ubah-tkj-4.html', {'msg':msg, 'siswa':siswa_update})
     else:
@@ -169,7 +170,7 @@ def add_master_rpl(request):
                 program_ahli = 'Rekayasa Perangkat Lunak',
             ).save()
 
-            msg = "Berhasil ditambahkan."
+            msg = pesan().add()
             form = FormAddRPL()
             return render(request, 'add-master-rpl.html', {'msg':msg, 'form':form})
     else:
@@ -185,7 +186,7 @@ def ubah_rpl_1(request,id_siswa):
             nama = request.POST['nama'],
             kelas = request.POST['kelas'],
         )
-        msg = "Berhasil diperbaharui."
+        msg = pesan().update()
         siswa_update = Siswa.objects.get(id=id_siswa)
         return render(request, 'ubah-rpl-1.html', {'msg':msg, 'siswa':siswa_update})
     else:
@@ -199,7 +200,7 @@ def ubah_rpl_2(request,id_siswa):
             nama = request.POST['nama'],
             kelas = request.POST['kelas'],
         )
-        msg = "Berhasil diperbaharui."
+        msg = pesan().update()
         siswa_update = Siswa.objects.get(id=id_siswa)
         return render(request, 'ubah-rpl-2.html', {'msg':msg, 'siswa':siswa_update})
     else:
@@ -213,7 +214,7 @@ def ubah_rpl_3(request,id_siswa):
             nama = request.POST['nama'],
             kelas = request.POST['kelas'],
         )
-        msg = "Berhasil diperbaharui."
+        msg = pesan().update()
         siswa_update = Siswa.objects.get(id=id_siswa)
         return render(request, 'ubah-rpl-3.html', {'msg':msg, 'siswa':siswa_update})
     else:
@@ -276,7 +277,7 @@ def add_instansi_rpl(request):
             nama = request.POST['nama'],
             alamat = request.POST['alamat'],
         ).save()
-        msg = "Berhasil ditambahkan."
+        msg = pesan().add()
         return render(request, 'add-instansi-rpl.html', {'msg':msg})
     return render(request, 'add-instansi-rpl.html')
 
@@ -285,7 +286,7 @@ def add_instansi_rpl(request):
 def delete_instansi_rpl(request,id_instansi):
     if request.POST:
         Instansi.objects.filter(id=id_instansi).delete()
-        msg = "Berhasil dihapus."
+        msg = pesan().delete()
         get_instansi = Instansi.objects.all()
     else:
         return redirect('/master-instansi/rpl')
@@ -298,7 +299,7 @@ def ubah_instansi_rpl(request,id_instansi):
             nama = request.POST['nama'],
             alamat = request.POST['alamat'],
         )
-        msg = "Berhasil diperbaharui."
+        msg = pesan().update()
         instansi = Instansi.objects.get(id=id_instansi)
         return render(request, 'ubah-instansi-rpl.html', {'msg':msg, 'instansi':instansi})
     else:
@@ -320,7 +321,7 @@ def add_instansi_tkj(request):
             nama = request.POST['nama'],
             alamat = request.POST['alamat'],
         ).save()
-        msg = "Berhasil ditambahkan."
+        msg = pesan().add()
         return render(request, 'add-instansi-tkj.html', {'msg':msg})
     return render(request, 'add-instansi-tkj.html')
 
@@ -328,7 +329,7 @@ def add_instansi_tkj(request):
 def delete_instansi_tkj(request,id_instansi):
     if request.POST:
         InstansiTKJ.objects.filter(id=id_instansi).delete()
-        msg = "Berhasil dihapus."
+        msg = pesan().delete()
         get_instansi = InstansiTKJ.objects.all()
     else:
         return redirect('/master-instansi/tkj')
@@ -341,7 +342,7 @@ def ubah_instansi_tkj(request,id_instansi):
             nama = request.POST['nama'],
             alamat = request.POST['alamat'],
         )
-        msg = "Berhasil diperbaharui."
+        msg = pesan().update()
         instansi = InstansiTKJ.objects.get(id=id_instansi)
         return render(request, 'ubah-instansi-tkj.html', {'msg':msg, 'instansi':instansi})
     else:
