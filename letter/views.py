@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 
 from master.models import Instansi, Siswa, InstansiTKJ
 from letter.models import Permohonan, PermohonanTKJ
+from pesan import pesan
 
 # Create your views here.
 # CETAK
@@ -61,7 +62,7 @@ def ubah_surat_rpl(request,id_surat):
             nama_siswa = s,
             nama_instansi = i,
         )
-        msg = "Berhasil diperbaharui."
+        msg = pesan().update()
         surat = Permohonan.objects.get(id=id_surat)
         siswa1 = Siswa.objects.filter(kelas='XII.RPL-1')
         siswa2 = Siswa.objects.filter(kelas='XII.RPL-2')
@@ -103,7 +104,7 @@ def ubah_surat_tkj(request,id_surat):
             nama_siswa = s,
             nama_instansi = i,
         )
-        msg = "Berhasil diperbaharui."
+        msg = pesan().update()
         siswa1 = Siswa.objects.filter(kelas='XII.TKJ-1')
         siswa2 = Siswa.objects.filter(kelas='XII.TKJ-2')
         siswa3 = Siswa.objects.filter(kelas='XII.TKJ-3')
@@ -156,7 +157,7 @@ def hapus_surat_tkj(request, id_surat):
         Siswa.objects.filter(id=id_siswa.nama_siswa.id).update(pkl = False)
         # lalu hapus data surat permohonannya
         PermohonanTKJ.objects.filter(id=id_surat).delete()
-        msg = "Berhasil dihapus."
+        msg = pesan().delete()
         get_surat = PermohonanTKJ.objects.filter(nama_siswa__program_ahli='Rekayasa Perangkat Lunak').order_by('nama_instansi')
     else:
         return redirect('/surat-tkj/')
@@ -170,7 +171,7 @@ def hapus_surat_rpl(request, id_surat):
         id_siswa = Permohonan.objects.get(id=id_surat)
         Siswa.objects.filter(id=id_siswa.nama_siswa.id).update(pkl = False)
         Permohonan.objects.filter(id=id_surat).delete()
-        msg = "Berhasil dihapus."
+        msg = pesan().delete()
         get_surat = Permohonan.objects.filter(nama_siswa__program_ahli='Rekayasa Perangkat Lunak').order_by('nama_instansi')
     else:
         return redirect('/surat-rpl/')
