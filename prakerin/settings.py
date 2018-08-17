@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'tag',
     'akun',
     'dashboard',
+    'karya_ilmiah',
 ]
 
 MIDDLEWARE = [
@@ -82,8 +83,13 @@ WSGI_APPLICATION = 'prakerin.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'pkl',
+        'USER': 'root',
+        'PASSWORD': 'passwd48',
+        #'OPTIONS': {
+        #    'sql_mode': 'traditional',
+        #}
     }
 }
 
