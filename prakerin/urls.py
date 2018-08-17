@@ -21,6 +21,7 @@ from letter import views as letter_view
 from tag import views as tag_view
 from dashboard import views as dashboard_view
 from akun import views as akun_view
+from karya_ilmiah import views as karil_view
 
 urlpatterns = [
     url(r'^dapur/', admin.site.urls),
@@ -118,5 +119,11 @@ urlpatterns = [
     url(r'^master-instansi/tkj/cetak/$', master_view.cetak_instansi_tkj),
     url(r'^master-instansi/rpl/cetak/$', master_view.cetak_instansi_rpl),
 
+    url(r'^pembimbing/$', master_view.pembimbing),
+    url(r'^pembimbing/tambah/$', master_view.add_pembimbing),
+    url(r'^pembimbing/ubah/(\d+)', master_view.ubah_pembimbing),
 
+    url(r'^karya-ilmiah/tkj/$', karil_view.karil_tkj),
+    url(r'^karya-ilmiah/rpl/$', karil_view.karil_rpl),
+    url(r'^karya-ilmiah/tambah/$', karil_view.add_karil),
 ]
