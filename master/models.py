@@ -24,6 +24,7 @@ class Siswa(models.Model):
     kelas = models.CharField(max_length=15, choices=kelas_choices)
     program_ahli = models.CharField(max_length=30, choices=program_choices)
     pkl = models.BooleanField(default=False)
+    status_judul = models.BooleanField(default=False)
 
     def __unicode__(self):
         return self.nama
@@ -38,6 +39,18 @@ class Instansi(models.Model):
 class InstansiTKJ(models.Model):
     nama = models.CharField(max_length=100)
     alamat = models.TextField()
+
+    def __unicode__(self):
+        return self.nama
+
+class Pembimbing(models.Model):
+    jurusan_choices = (
+        ('TKJ', 'TKJ'),
+        ('RPL', 'RPL'),
+    )
+
+    nama = models.CharField(max_length=40)
+    jurusan = models.CharField(max_length=3, choices=jurusan_choices)
 
     def __unicode__(self):
         return self.nama
