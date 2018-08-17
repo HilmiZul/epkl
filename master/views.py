@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
-from master.models import Siswa, Instansi, InstansiTKJ
-from master.forms import FormAddTKJ, FormAddRPL
+from master.models import Siswa, Instansi, InstansiTKJ, Pembimbing
+from master.form_tkj import FormTKJ
+from master.form_rpl import FormRPL
+from master.form_pembimbing import FormPembimbing
 from pesan import pesan
 
 # Create your views here.
@@ -17,7 +19,7 @@ def master_tkj(request):
 @login_required(login_url=settings.LOGIN_URL)
 def add_master_tkj(request):
     if request.POST:
-        form = FormAddTKJ(request.POST)
+        form = FormTKJ(request.POST)
         if form.is_valid():
             add_siswa = Siswa(
                 NIS = request.POST['NIS'],
@@ -27,10 +29,10 @@ def add_master_tkj(request):
             ).save()
 
             msg = pesan().add()
-            form = FormAddTKJ()
+            form = FormTKJ()
             return render(request, 'add-master-tkj.html', {'msg':msg, 'form':form})
     else:
-        form = FormAddTKJ()
+        form = FormTKJ()
     return render(request, 'add-master-tkj.html', {'form':form})
 
 # TKJ-1
@@ -161,7 +163,7 @@ def master_rpl(request):
 @login_required(login_url=settings.LOGIN_URL)
 def add_master_rpl(request):
     if request.POST:
-        form = FormAddRPL(request.POST)
+        form = FormRPL(request.POST)
         if form.is_valid():
             add_siswa = Siswa(
                 NIS = request.POST['NIS'],
@@ -171,10 +173,10 @@ def add_master_rpl(request):
             ).save()
 
             msg = pesan().add()
-            form = FormAddRPL()
+            form = FormRPL()
             return render(request, 'add-master-rpl.html', {'msg':msg, 'form':form})
     else:
-        form = FormAddRPL()
+        form = FormRPL()
     return render(request, 'add-master-rpl.html', {'form':form})
 
 
@@ -385,3 +387,40 @@ def cetak_instansi_rpl(request):
     instansi = Instansi.objects.all()
     jurusan = "Rekayasa Perangkat Lunak"
     return render(request, 'cetak-instansi.html', {'instansi':instansi, 'jurusan':jurusan})
+
+
+# PEMBIMBING
+@login_required(login_url=settings.LOGIN_URL)
+def pembimbing(request):
+    p = Pembimbing.objects.all().order_by('-jurusan')
+    return render(request, 'pembimbing.html', {'pembimbing': p})
+
+@login_required(login_url=settings.LOGIN_URL)
+def add_pembimbing(request):
+    if request.POST:
+        form = FormPembimbing(request.POST)
+        if form.is_valid():
+            Pembimbing(
+                nama = request.POST['nama'],
+                jurusan = request.POST['jurusan'],
+            ).save()
+            msg = pesan().add()
+            form = FormPembimbing()
+            return render(request, 'add-pembimbing.html', {'msg':msg, 'form':form})
+    else:
+        form = FormPembimbing()
+    return render(request, 'add-pembimbing.html', {'form':form})
+
+@login_required(login_url=settings.LOGIN_URL)
+def ubah_pembimbing(request,id_p):
+    if request.POST:
+        Pembimbing.objects.filter(id=id_p).update(
+            nama = request.POST['nama'],
+            jurusan = request.POST['jurusan'],
+        )
+        msg = pesan().update()
+        pembimbing = Pembimbing.objects.get(id=id_p)
+        return render(request, 'sunting-pembimbing.html', {'msg':msg, 'pembimbing': pembimbing})
+    else:
+        pembimbing = Pembimbing.objects.get(id=id_p)
+    return render(request, 'sunting-pembimbing.html', {'pembimbing':pembimbing})
