@@ -1,0 +1,37 @@
+{% extends 'layout2/base.html' %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-12">
+    <h2 class="page-header">
+      Karya Ilmiah RPL
+      <a href="/karya-ilmiah/tambah" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
+    </h2>
+
+    <div class="table-responsive">
+      <table id="dataTables" class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>NO.</th>
+            <th>JUDUL</th>
+            <th>TANGGAL ACC</th>
+            <th>PEMBIMBING</th>
+            <th>NAMA SISWA</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for k in karil %}
+            <tr>
+              <td>{{ forloop.counter }}.</td>
+              <td>{{ k.judul | upper }}</td>
+              <td>{{ k.tanggal_acc }}</td>
+              <td>{{ k.pembimbing }}</td>
+              <td>{{ k.nama }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}
