@@ -1,0 +1,36 @@
+{% extends "layout2/base.html" %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-12">
+    <h2 class="page-header">
+      Sunting Pembimbing: <strong>{{ pembimbing.nama }}</strong>
+    </h2>
+  </div>
+
+  <div class="col-md-6">
+    {% if msg %}
+      <div class="alert alert-success">{{ msg }}</div>
+    {% endif %}
+
+    <form action="/pembimbing/ubah/{{ pembimbing.id }}" method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="nama">NAMA</label>
+        <input type="text" id="nama" class="form-control" name="nama" value="{{ pembimbing.nama }}" placeholder="Nama pembimbing...">
+      </div>
+      <div class="form-group">
+        <label for="jurusan">JURUSAN</label>
+        <select class="form-control selectpicker" name="jurusan">
+          <option value="{{ pembimbing.jurusan }}">{{ pembimbing.jurusan }}</option>
+          <option>-----</option>
+          <option value="TKJ">TKJ</option>
+          <option value="RPL">RPL</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary btn-lg"><i class="fa fa-save"></i> Simpan</button>
+      <a href="/pembimbing" class="btn btn-danger btn-lg">Kembali</a>
+    </form>
+  </div>
+</div>
+{% endblock %}
