@@ -23,7 +23,7 @@
           {% for k in karil %}
             <tr>
               <td>{{ forloop.counter }}.</td>
-              <td>{{ k.judul | upper }}</td>
+              <td><a href="/karya-ilmiah/tkj/sunting/{{ k.id }}">{{ k.judul | upper }}</a></td>
               <td>{{ k.tanggal_acc }}</td>
               <td>{{ k.pembimbing }}</td>
               <td>{{ k.nama }}</td>
