@@ -126,4 +126,6 @@ urlpatterns = [
     url(r'^karya-ilmiah/tkj/$', karil_view.karil_tkj),
     url(r'^karya-ilmiah/rpl/$', karil_view.karil_rpl),
     url(r'^karya-ilmiah/tambah/$', karil_view.add_karil),
+    url(r'^karya-ilmiah/rpl/sunting/(\d+)$', karil_view.sunting_karil_rpl),
+    url(r'^karya-ilmiah/tkj/sunting/(\d+)$', karil_view.sunting_karil_tkj),
 ]
