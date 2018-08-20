@@ -1,0 +1,38 @@
+{% extends 'layout2/base.html' %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-12">
+    <h2 class="page-header">Sunting Judul Karya Ilmiah</h2>
+  </div>
+  <div class="col-md-6">
+    {% if msg %}
+      <div class="alert alert-success">{{ msg }}</div>
+    {% endif %}
+    <form action="/karya-ilmiah/rpl/sunting/{{ karil.id }}" method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="">NAMA SISWA</label>
+        <select class="form-control" name="nama" disabled>
+          <option selected value="{{ karil.id }}">{{ karil.nama.kelas }} &#8212; {{ karil.nama.NIS }} &#8212; {{ karil.nama }}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="">JUDUL</label>
+        <textarea name="judul" class="form-control" cols="80" rows="5" autofocus required>{{ karil.judul }}</textarea>
+      </div>
+      <div class="form-group">
+        <label for="">TANGGAL ACC</label>
+        <input type="text" class="form-control" value="{{ karil.tanggal_acc }}" readonly>
+      </div>
+      <div class="form-group">
+        <label for="">PEMBIMBING</label>
+        <input type="text" class="form-control" value="{{ karil.pembimbing }}" readonly>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-lg"><i class="fa fa-save"></i> Simpan</button>
+      <a href="/karya-ilmiah/rpl" class="btn btn-danger btn-lg">Kembali</a>
+    </form>
+  </div>
+</div>
+{% endblock %}
