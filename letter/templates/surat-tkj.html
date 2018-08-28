@@ -6,7 +6,8 @@
     <h2 class="page-header">
       Siswa Yang Telah Mendapatkan Tempat PKL - TKJ
       <a href="/surat-tkj/tambah/" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
-      <a href="/surat-tkj/cetak/" class="btn btn-success">Cetak</a>
+      <a href="{% url 'export_pkl_tkj' %}" class="btn btn-success"><i class="fa fa-download"></i> XLS</a>
+      <a href="/surat-tkj/cetak/" class="btn btn-warning">Cetak</a>
       <a href="/master-tkj/belum-pkl/" class="btn btn-danger">NOT YET</a>
     </h2>
     {% if msg %}
