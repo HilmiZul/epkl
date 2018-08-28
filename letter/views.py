@@ -7,45 +7,6 @@ from letter.models import Permohonan, PermohonanTKJ
 from pesan import pesan
 
 # Create your views here.
-# CETAK
-@login_required(login_url=settings.LOGIN_URL)
-def form_cetak(request,id_ins):
-    '''if request.POST:
-        get_req = request.POST['id_ins']
-        if get_req is not None:
-            meta_surat = Permohonan.objects.filter(nama_instansi_id=request.POST['id_ins'])
-            instansi = Instansi.objects.get(id=request.POST['id_ins'])
-            result = render(request, 'cetak.html', {'meta_surat':meta_surat, 'instansi':instansi})
-        else:
-            result = redirect('/')
-    else:
-        result = redirect('/')'''
-    if id_ins is not None:
-        meta_surat = Permohonan.objects.filter(nama_instansi_id=id_ins)
-        instansi = Instansi.objects.get(id=id_ins)
-        result = render(request, 'cetak.html', {'meta_surat':meta_surat, 'instansi':instansi})
-    else:
-        result = redirect('/')
-    return result
-
-def form_cetak_tkj(request,id_ins):
-    if id_ins is not None:
-        meta_surat = PermohonanTKJ.objects.filter(nama_instansi_id=id_ins)
-        instansi = InstansiTKJ.objects.get(id=id_ins)
-        result = render(request, 'cetak.html', {'meta_surat':meta_surat, 'instansi':instansi})
-    else:
-        result = redirect('/')
-    return result
-
-
-# LAPORAN PERMOHONAN PKL
-@login_required(login_url=settings.LOGIN_URL)
-def laporan_permohonan(request):
-    permohonan = Permohonan.objects.all().order_by('nama_instansi')
-    return render(request, 'laporan.html', {'permohonans':permohonan})
-
-
-##
 # SURAT PERMOHONAN
 @login_required(login_url=settings.LOGIN_URL)
 def surat_rpl(request):
@@ -233,28 +194,3 @@ def tambah_surat_rpl(request):
     return render(request, 'tambah-surat-rpl.html',
         {'siswa1':siswa1, 'siswa2':siswa2, 'siswa3':siswa3, 'instansis':instansis}
     )
-
-
-
-@login_required(login_url=settings.LOGIN_URL)
-def cetak_surat_rpl(request):
-    fix = Permohonan.objects.filter(nama_siswa__pkl=True, nama_siswa__program_ahli='Rekayasa Perangkat Lunak').order_by('nama_instansi__nama')
-    return render(request, 'cetak-surat-rpl.html', {'surat':fix})
-
-@login_required(login_url=settings.LOGIN_URL)
-def cetak_rpl_belum_pkl(request):
-    siswa = Siswa.objects.filter(pkl=False, program_ahli='Rekayasa Perangkat Lunak').order_by('NIS')
-    count = siswa.count()
-    return render(request, 'cetak-rpl-belum-pkl.html', {'siswa':siswa, 'count':count})
-
-
-@login_required(login_url=settings.LOGIN_URL)
-def cetak_surat_tkj(request):
-    fix = PermohonanTKJ.objects.filter(nama_siswa__pkl=True, nama_siswa__program_ahli='Teknik Komputer dan Jaringan').order_by('nama_instansi__nama')
-    return render(request, 'cetak-surat-tkj.html', {'surat':fix})
-
-@login_required(login_url=settings.LOGIN_URL)
-def cetak_tkj_belum_pkl(request):
-    siswa = Siswa.objects.filter(pkl=False, program_ahli='Teknik Komputer dan Jaringan').order_by('NIS')
-    count = siswa.count()
-    return render(request, 'cetak-tkj-belum-pkl.html', {'siswa':siswa, 'count':count})
