@@ -20,14 +20,15 @@ from master import views as master_view
 from letter import views as letter_view
 from tag import views as tag_view
 from dashboard import views as dashboard_view
-from akun import views as akun_view
+from akun import views_akun
 from karya_ilmiah import views as karil_view
+from karya_ilmiah import views_report as karil_view_report
 
 urlpatterns = [
     url(r'^dapur/', admin.site.urls),
 
-    url(r'^login/$', akun_view.akun_login),
-    url(r'^logout/$', akun_view.akun_logout),
+    url(r'^login/$', views_akun.akun_login),
+    url(r'^logout/$', views_akun.akun_logout),
     url(r'^$', dashboard_view.dashboard),
 
     url(r'^master-tkj/$', master_view.master_tkj),
@@ -128,4 +129,8 @@ urlpatterns = [
     url(r'^karya-ilmiah/tambah/$', karil_view.add_karil),
     url(r'^karya-ilmiah/rpl/sunting/(\d+)$', karil_view.sunting_karil_rpl),
     url(r'^karya-ilmiah/tkj/sunting/(\d+)$', karil_view.sunting_karil_tkj),
+    url(r'^karya-ilmiah/tkj/report/$', karil_view_report.report_karil_tkj),
+    url(r'^karya-ilmiah/rpl/report/$', karil_view_report.report_karil_rpl),
+    url(r'^karya-ilmiah/tkj/export/$', karil_view_report.export_karil_tkj, name='export_karil_tkj'),
+    url(r'^karya-ilmiah/rpl/export/$', karil_view_report.export_karil_rpl, name='export_karil_rpl'),
 ]
