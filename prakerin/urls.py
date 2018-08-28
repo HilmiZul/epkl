@@ -17,6 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 
 from master import views as master_view
+from master import views_report as master_view_report
 from letter import views as letter_view
 from letter import views_report as letter_view_report
 from tag import views as tag_view
@@ -137,4 +138,7 @@ urlpatterns = [
 
     url(r'^surat-rpl/export/$', letter_view_report.export_pkl_rpl, name='export_pkl_rpl'),
     url(r'^surat-tkj/export/$', letter_view_report.export_pkl_tkj, name='export_pkl_tkj'),
+
+    url(r'^master-instansi/tkj/export/$', master_view_report.export_instansi_tkj, name='export_instansi_tkj'),
+    url(r'^master-instansi/rpl/export/$', master_view_report.export_instansi_rpl, name='export_instansi_rpl'),
 ]
