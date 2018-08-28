@@ -4,9 +4,10 @@
 <div class="row">
   <div class="col-md-12">
     <h2 class="page-header">
-      Instansi Tujuan PKL
+      Instansi
       <a href="/master-instansi/tkj/tambah/" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah</a>
-      <a href="/master-instansi/tkj/cetak/" class="btn btn-success"><i class="fa fa-print"></i> Cetak</a>
+      <a href="{% url 'export_instansi_tkj' %}" class="btn btn-success"><i class="fa fa-download"></i> XLS</a>
+      <a href="/master-instansi/rpl/cetak/" class="btn btn-warning"><i class="fa fa-print"></i> Cetak</a>
     </h2>
     {% if msg %}
       <div class="alert alert-success">{{ msg }}</div>
