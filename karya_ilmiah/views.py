@@ -31,16 +31,17 @@ def add_karil(request):
                 pembimbing = pembimbing,
             ).save()
 
-            # ubah status_judul disini
+            # ubah status_judul jadi True
+            # agar mudah mengelompokkan yg sudah dapet judul :D
             Siswa.objects.filter(id=request.POST['nama']).update(status_judul=True)
 
             msg = pesan().add()
-            form = Form_Karil_TKJ()
+            form = Form_Karil_TKJ() # buat form kosong
 
             # ambil siswa per jurusan yang statusnya belum punya JUDUL.
             # data ini akan dimasukkan kedalam form input select
-            tkj = Siswa.objects.filter(kelas__contains='XII.TKJ', status_judul=False).order_by('kelas')
-            rpl = Siswa.objects.filter(kelas__contains='XII.RPL', status_judul=False).order_by('kelas')
+            tkj = Siswa.objects.filter(kelas__contains='XII.TKJ', status_judul=False).order_by('kelas', 'nama')
+            rpl = Siswa.objects.filter(kelas__contains='XII.RPL', status_judul=False).order_by('kelas', 'nama')
             return render(request, 'add-karil.html', {
                 'msg': msg,
                 'form': form,
@@ -49,8 +50,8 @@ def add_karil(request):
             })
     else:
         form = Form_Karil_TKJ()
-        tkj = Siswa.objects.filter(kelas__contains='XII.TKJ', status_judul=False).order_by('kelas')
-        rpl = Siswa.objects.filter(kelas__contains='XII.RPL', status_judul=False).order_by('kelas')
+        tkj = Siswa.objects.filter(kelas__contains='XII.TKJ', status_judul=False).order_by('kelas', 'nama')
+        rpl = Siswa.objects.filter(kelas__contains='XII.RPL', status_judul=False).order_by('kelas', 'nama')
     return render(request, 'add-karil.html', {
         'form': form,
         'tkj': tkj,
