@@ -11,7 +11,7 @@ Pengembangan dari [esp](https://github.com/hilmizul/esp).
 # Setup
 * Create new database e.g. ```pkl```
 * Download [epkl-master.zip](https://github.com/HilmiZul/epkl/archive/master.zip)
-* Extract t ```~/```. Open Terminal.
+* Extract to ```~/```. Open Terminal.
 * Debian/Ubuntu: ```sudo apt-get install libmysqlclient-dev```
 * ```pip install mysqlclient```
 * ```pip install xlwt```
