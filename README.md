@@ -4,7 +4,7 @@ Pengembangan dari [esp](https://github.com/hilmizul/esp).
 
 # Requirement
 * Python 2.7.x
-* Django 1.10.x, 1.11.x
+* Django 1.10.x or 1.11.x
 * Lib.xlwt
 * libmysqlclient-dev, mysqlclient
 
