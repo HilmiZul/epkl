@@ -18,6 +18,7 @@ from django.contrib import admin
 
 from master import views as master_view
 from letter import views as letter_view
+from letter import views_report as letter_view_report
 from tag import views as tag_view
 from dashboard import views as dashboard_view
 from akun import views_akun
@@ -42,7 +43,7 @@ urlpatterns = [
     url(r'^surat-tkj/tambah/$', letter_view.tambah_surat_tkj),
     url(r'^surat-tkj/hapus/(\d+)', letter_view.hapus_surat_tkj),
     url(r'^surat-tkj/ubah/(\d+)', letter_view.ubah_surat_tkj),
-    url(r'^surat-tkj/cetak-surat/(\d+)', letter_view.form_cetak_tkj),
+    url(r'^surat-tkj/cetak-surat/(\d+)', letter_view_report.form_cetak_tkj),
 
     url(r'^master-tkj-1/ubah/(\d+)', master_view.ubah_tkj_1),
     url(r'^master-tkj-2/ubah/(\d+)', master_view.ubah_tkj_2),
@@ -84,8 +85,8 @@ urlpatterns = [
     url(r'^master-instansi/tkj/ubah/(\d+)$', master_view.ubah_instansi_tkj),
 
 
-    url(r'^cetak/(\d+)', letter_view.form_cetak),
-    url(r'^laporan/', letter_view.laporan_permohonan),
+    url(r'^cetak/(\d+)', letter_view_report.form_cetak),
+    url(r'^laporan/', letter_view_report.laporan_permohonan),
 
     # NAME TAG
     url(r'^name-tag/$', tag_view.name_tag),
@@ -111,11 +112,11 @@ urlpatterns = [
     url(r'^absensi/$', master_view.absensi),
     url(r'^absensi/cetak/$', master_view.cetak_absensi),
 
-    url(r'^surat-rpl/cetak/$', letter_view.cetak_surat_rpl),
-    url(r'^master-rpl/belum-pkl/$', letter_view.cetak_rpl_belum_pkl),
+    url(r'^surat-rpl/cetak/$', letter_view_report.cetak_surat_rpl),
+    url(r'^master-rpl/belum-pkl/$', letter_view_report.cetak_rpl_belum_pkl),
 
-    url(r'^surat-tkj/cetak/$', letter_view.cetak_surat_tkj),
-    url(r'^master-tkj/belum-pkl/$', letter_view.cetak_tkj_belum_pkl),
+    url(r'^surat-tkj/cetak/$', letter_view_report.cetak_surat_tkj),
+    url(r'^master-tkj/belum-pkl/$', letter_view_report.cetak_tkj_belum_pkl),
 
     url(r'^master-instansi/tkj/cetak/$', master_view.cetak_instansi_tkj),
     url(r'^master-instansi/rpl/cetak/$', master_view.cetak_instansi_rpl),
@@ -133,4 +134,7 @@ urlpatterns = [
     url(r'^karya-ilmiah/rpl/report/$', karil_view_report.report_karil_rpl),
     url(r'^karya-ilmiah/tkj/export/$', karil_view_report.export_karil_tkj, name='export_karil_tkj'),
     url(r'^karya-ilmiah/rpl/export/$', karil_view_report.export_karil_rpl, name='export_karil_rpl'),
+
+    url(r'^surat-rpl/export/$', letter_view_report.export_pkl_rpl, name='export_pkl_rpl'),
+    url(r'^surat-tkj/export/$', letter_view_report.export_pkl_tkj, name='export_pkl_tkj'),
 ]
