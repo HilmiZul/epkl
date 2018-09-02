@@ -5,16 +5,17 @@ Pengembangan dari [esp](https://github.com/hilmizul/esp).
 # Requirement
 * Python 2.7.x
 * Django 1.10.x or 1.11.x
-* Lib.xlwt
+* MySQL Server
+* xlwt
 * libmysqlclient-dev, mysqlclient
 
 # Setup
-* Create new database e.g. ```pkl```
 * Download [epkl-master.zip](https://github.com/HilmiZul/epkl/archive/master.zip)
 * Extract to ```~/```. Open Terminal.
-* Debian/Ubuntu: ```sudo apt-get install libmysqlclient-dev```
+* Debian/Ubuntu: ```sudo apt-get install mysql-server libmysqlclient-dev```
 * ```pip install mysqlclient```
 * ```pip install xlwt```
+* Create new database e.g. ```pkl```
 * ```cd epkl-master/```
 * ```chmod +x manage.py```
 * ```./manage.py makemigrations && ./manage.py migrate```
