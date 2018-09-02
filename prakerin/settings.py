@@ -86,7 +86,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'pkl',
         'USER': 'root',
-        'PASSWORD': 'passwd48',
+        'PASSWORD': '',
         #'OPTIONS': {
         #    'sql_mode': 'traditional',
         #}
