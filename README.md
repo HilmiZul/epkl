@@ -12,7 +12,7 @@ Pengembangan dari [esp](https://github.com/hilmizul/esp).
 # Setup
 * Download [epkl-master.zip](https://github.com/HilmiZul/epkl/archive/master.zip)
 * Extract to ```~/```. Open Terminal.
-* Debian/Ubuntu: ```sudo apt-get install mysql-server libmysqlclient-dev```
+* Debian/Ubuntu: ```sudo apt-get install mysql-server libmysqlclient-dev python-pip```
 * ```pip install mysqlclient```
 * ```pip install xlwt```
 * Create new database e.g. ```pkl```
