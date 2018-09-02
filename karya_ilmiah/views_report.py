@@ -19,8 +19,6 @@ def report_karil_rpl(request):
 
 
 # EXPORT SEMUA KARYA ILMIAH TKJ & RPL KE FILE .xls
-# Haturnuhun ka Kang Vitor Freitas
-# reference: https://simpleisbetterthancomplex.com/tutorial/2016/07/29/how-to-export-to-excel.html
 @login_required(login_url=settings.LOGIN_URL)
 def export_karil_tkj(request):
     response = HttpResponse(content_type='application/ms-excel')
