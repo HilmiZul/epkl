@@ -28,7 +28,7 @@ Pengembangan dari [esp](https://github.com/hilmizul/esp).
 * Go to [http://127.0.0.1:8000/dapur](http://127.0.0.1:8000/dapur).
 * Enter username and password you created before.
 * Go to ```Akun``` and then ```Add```.
-* Input username from django User.
+* Select username.
 * Save & Done.
 
 ## Login to main system
