@@ -29,6 +29,7 @@
               <td><a href="/master-instansi/rpl/ubah/{{ instansi.id }}">{{ instansi.nama }}</a></td>
               <td>{{ instansi.alamat }}</td>
               <td>
+                <a href="https://www.google.com/maps/search/?api=1&query={{ instansi.alamat }}" class="btn btn-info" target="_blank"><i class="fa fa-map-marker"></i> Peta</a>
                 <a href="#" class="btn btn-danger" data-toggle="modal" data-target="#id-{{ instansi.id }}"><i class="fa fa-trash-o"></i> Hapus</a>
               </td>
             </tr>

@@ -15,14 +15,14 @@
     {% endif %}
 
     <div class="alert alert-info">
-      Klik <strong>NAMA TEMPAT PKL</strong> untuk mencetak surat permohonan.
+      Klik <strong>NAMA INSTANSI</strong> untuk mencetak surat permohonan.
     </div>
     <div class="table-responsive">
       <table class="table table-hover table-striped" id="dataTables">
         <thead>
           <tr>
             <th>NO.</th>
-            <th>TEMPAT PKL</th>
+            <th>INSTANSI</th>
             <th>NAMA SISWA</th>
             <th>KELAS</th>
             <th>AKSI</th>
@@ -37,6 +37,7 @@
               <td>{{ surat.nama_siswa.kelas }}</td>
               <td>
                 <a href="/surat-tkj/ubah/{{ surat.id }}" class="btn btn-success"><i class="fa fa-edit"></i> Sunting</a>
+                <a href="https://www.google.com/maps/search/?api=1&query={{ surat.nama_instansi.alamat }}" class="btn btn-info" target="-_blank"><i class="fa fa-map-marker"></i> Peta</a>
                 <a href="#" data-toggle="modal" data-target="#id-{{ surat.id }}" class="btn btn-danger"><i class="fa fa-trash-o"></i> Hapus</a>
               </td>
             </tr>
